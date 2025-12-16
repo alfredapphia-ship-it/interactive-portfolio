@@ -1,0 +1,630 @@
+
+
+/* 1. CSS Reset & Global Styles       .      */
+
+* {
+    margin:1 ;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+ul {
+    list-style: none;
+}
+
+/* Reusable Utility Class */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 80px 0;
+    min-height: 100vh;
+}
+
+
+/* ==================================== */
+/* 2. CSS Variables (Theming)           */
+/* Fulfills: Color palette using CSS variables */
+/* ==================================== */
+:root {
+    /* --- Light Theme (Default) --- */
+    --bg-color: #f7f7f7;
+    --card-bg-color: #ffffff;
+    --text-color: #333333;
+    --primary-color: #007bff; /* Vibrant Blue (Action) */
+    --secondary-color: #6c757d; /* Medium Gray (Accents/Borders) */
+    --border-color: #dddddd;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Dark Theme Overrides --- */
+.dark-theme {
+    --bg-color: #1a1a1a;
+    --card-bg-color: #2c2c2c;
+    --text-color: #f0f0f0;
+    --primary-color: #4CAF50; /* Success Green (Dark Action) */
+    --secondary-color: #adb5bd;
+    --border-color: #444444;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Apply theme variables */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* ==================================== */
+/* 3. Header & Navigation Styles        */
+/* Fulfills: Sticky navigation bar */
+/* ==================================== */
+.header {
+    position: sticky; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--card-bg-color);
+    box-shadow: var(--box-shadow);
+    transition: background-color 0.3s;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Desktop Navigation Links (Flexbox) */
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 5px 0;
+    position: relative;
+    color: var(--text-color);
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Smooth Scrolling Link Hover Effect */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease-out;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ==================================== */
+/* 4. Theme Switch Styling (Switch Input) */
+/* ==================================== */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--secondary-color);
+    transition: 0.4s;
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--bg-color); 
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 28px;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(32px);
+}
+
+/* ==================================== */
+/* 5. Mobile Menu Button (Hamburger)    */
+/* ==================================== */
+.menu-btn {
+    display: none; 
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 20px;
+    z-index: 1001; 
+}
+
+.menu-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--text-color);
+    border-radius: 1px;
+    transition: all 0.3s linear;
+}
+
+.menu-btn.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-btn.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-btn.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ==================================== */
+/* 6. Utility Classes: Buttons & Titles */
+/* ==================================== */
+.btn {
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-color);
+    color: var(--bg-color);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    position: relative;
+    color: var(--primary-color);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--secondary-color);
+    border-radius: 2px;
+}
+
+/* ==================================== */
+/* 7. Hero Section Styles               */
+/* ==================================== */
+#hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.hero-content {
+    padding-top: 80px; 
+}
+
+.greeting {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 5px;
+    color: var(--secondary-color);
+}
+
+.name {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.animated-text {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+}
+
+.hero-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* ==================================== */
+/* 8. About Section Styles (CSS Grid)   */
+/* Fulfills: Use of CSS Grid/Flexbox */
+/* ==================================== */
+.about-grid {
+    display: grid;
+    /* Desktop: Two columns, 30% for image, 70% for text */
+    grid-template-columns: 0.3fr 0.7fr; 
+    gap: 50px;
+    align-items: start;
+}
+
+.about-image {
+    text-align: center;
+}
+
+.profile-photo {
+    width: 100%;
+    max-width: 300px; 
+    height: auto;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    object-fit: cover; /* Fulfills 'Fit photo' requirement */
+    transition: transform 0.3s ease;
+}
+
+.profile-photo:hover {
+    transform: scale(1.02);
+}
+
+.about-text-content p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.cv-button {
+    margin-top: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ==================================== */
+/* 9. Skills Section Styles (CSS Grid)  */
+/* Fulfills: Animated Skill Bars */
+/* ==================================== */
+.skills-grid {
+    display: grid;
+    /* Desktop: 2 columns */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.skill-item h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.skill-bar {
+    background-color: var(--border-color);
+    border-radius: 5px;
+    height: 15px;
+    overflow: hidden; 
+}
+
+.skill-bar-inner {
+    /* Initial state set to 0% width for JS animation */
+    width: 0; 
+    height: 100%;
+    background-color: var(--primary-color);
+    /* Transition required for the animation effect */
+    transition: width 1s ease-out; 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 5px;
+    font-size: 0.7rem;
+    color: var(--bg-color);
+}
+
+
+/* ==================================== */
+/* 10. Projects Section Styles (CSS Grid) */
+/* Fulfills: Hover effects */
+/* ==================================== */
+.project-filters {
+    text-align: center;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.filter-button {
+    padding: 8px 20px;
+    border: 2px solid var(--secondary-color);
+    background: transparent;
+    color: var(--text-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.filter-button:hover,
+.filter-button.active {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border-color: var(--primary-color);
+}
+
+.projects-grid {
+    display: grid;
+    /* Desktop: 3 columns for project display (or 2 if only 2 are present) */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background-color: var(--card-bg-color);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    padding: 15px;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.project-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* ==================================== */
+/* 11. Footer Styles */
+/* Fulfills: Footer is styled */
+/* ==================================== */
+footer {
+    padding: 20px 0;
+    text-align: center;
+    background-color: var(--card-bg-color);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer p {
+    font-size: 0.9rem;
+}
+
+.social-links a {
+    font-size: 1.5rem;
+    margin-left: 15px;
+    color: var(--secondary-color);
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+/* ==================================== */
+/* 12. Scroll Animation (The initial state for JS) */
+/* Fulfills: Scroll-to-view/fade-in animation */
+/* ==================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ==================================== */
+/* 13. Media Queries (Responsiveness)   */
+/* Fulfills: Mobile-first approach, Breakpoints: 768px, 1024px */
+/* ==================================== */
+
+/* --- Tablet/Small Desktop Layout (max-width: 1024px) --- */
+@media screen and (max-width: 1024px) {
+    .name {
+        font-size: 3rem;
+    }
+
+    .animated-text {
+        font-size: 1.5rem;
+    }
+}
+
+
+/* --- Mobile/Tablet Layout (max-width: 768px) --- */
+@media screen and (max-width: 768px) {
+    
+    /* Show the hamburger menu button */
+    .menu-btn {
+        display: flex;
+    }
+
+    /* Mobile Menu Style (Off-screen by default) */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70%;
+        height: 100%;
+        background-color: var(--card-bg-color);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
+        box-shadow: -4px 0 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* When the JS toggles the 'active' class */
+    .nav-links.active {
+        transform: translateX(0);
+    }
+
+    .section {
+        padding: 50px 0;
+    }
+    
+    /* About Section: Switch to single column stack */
+    .about-grid {
+        grid-template-columns: 1fr; 
+        gap: 30px;
+    }
+
+    .about-image {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .profile-photo {
+        max-width: 80%;
+    }
+
+    /* Skills Section: Single column */
+    .skills-grid {
+        grid-template-columns: 1fr; 
+    }
+    
+    /* Projects Section: Single column */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-filters {
+        flex-wrap: wrap; 
+    }
+
+    /* Footer: Stack content */
+    footer .container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .social-links {
+        margin-top: 10px;
+    }
+}
+
+/* --- Extra small mobile device layout (max-width: 480px) --- */
+@media screen and (max-width: 480px) {
+    .name {
+        font-size: 2.5rem;
+    }
+    .animated-text {
+        font-size: 1.2rem;
+    }
+    .hero-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+}

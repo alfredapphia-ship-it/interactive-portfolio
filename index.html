@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<script src="./main.js"></script> 
+
+<body>
+    
+    <header class="header">
+        <nav class="navbar">
+            <a href="#" class="logo">MyPortfolio</a>
+            
+            <div class="nav-links">
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="theme-toggle">
+                    <input type="checkbox" id="theme-toggle" />
+                    <div class="slider round"></div>
+                </label>
+            </div>
+            
+            <div class="menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="section reveal">
+            <div class="container hero-content">
+                <p class="greeting reveal">Hello, I'm </p>
+                <h1 class="name reveal">Apphia Alfred</h1>
+                
+                <p class="animated-text reveal">
+                    A Full-Stack Developer & 
+                    <span class="typewriter" id="typewriter-text"></span>
+                </p>
+
+                <div class="hero-actions reveal">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    
+                    <a href="assets/Your_CV_File.pdf" download class="btn btn-secondary">Download CV</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section reveal">
+            <div class="container">
+                <h2 class="section-title reveal">About Me</h2>
+
+                <div class="about-grid">
+                    <div class="about-image reveal">
+                        <img src="./assets/images/Screenshot .png" alt="Professional portrait of developer" class="profile-photo">
+                    </div>
+
+                    <div class="about-text-content reveal">
+                        <p>
+                            I am a passionate Full-Stack Frontend Developer specializing in creating interactive web applications. With expertise in HTML5,  CSS and JavaScript , I focus on building responsive, high-performance experience.<br> My goal is to become a web developer with knowledge in both front and back end</br> </p>
+                        <p>
+                            I thrive in fast-paced environments, continuously learning new technologies to stay ahead of industry trends. I am currently seeking opportunities to apply my skills in challenging and innovative projects.
+                        </p>
+                        
+                        <a href="assets/Your_CV_File.pdf" download class="btn btn-primary cv-button">
+                            Download CV <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section reveal">
+            <div class="container">
+                <h2 class="section-title reveal">Technical Skills</h2>
+                <div class="skills-grid">
+                    
+                    <div class="skill-item reveal">
+                        <h3>HTML & CSS</h3>
+                        <div class="skill-bar">
+                            <div class="skill-bar-inner" data-percentage="95">95%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item reveal">
+                        <h3>JavaScript </h3>
+                        <div class="skill-bar">
+                            <div class="skill-bar-inner" data-percentage="85">85%</div>
+                        </div>
+                    </div>
+
+                   
+
+                    <div class="skill-item reveal">
+                        <h3> CSS</h3>
+                        <div class="skill-bar">
+                            <div class="skill-bar-inner" data-percentage="80">80%</div>
+                        </div>
+                    </div>
+                    
+                    </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section reveal">
+            <div class="container">
+                <h2 class="section-title reveal">My Latest Work</h2>
+                
+                <div class="project-filters reveal">
+                    <button class="filter-button active" data-filter="all">All</button>
+                    <button class="filter-button" data-filter="web">Web Development</button>
+                </div>
+
+                <div class="projects-grid">
+                    
+                    <div class="project-card reveal" data-category="web">
+                        <img src="./assets/images/project1.jpg" alt="Project Screenshot">
+                        <h3>Simple HTML/CSS Portfolio</h3>
+                        <p>A  responsive portfolio demonstrating  HTML and CSS skills.</p>
+                        <a href="#" target="_blank" class="project-link"><i class="fas fa-external-link
+                    "></i>view project </a>
+                    </div>
+                    
+<footer> 
+  <p>© <span id="2025"></span> advanced-portfolio</p>
+</footer>
+</html>
