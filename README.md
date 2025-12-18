@@ -1,0 +1,5 @@
+This is my professional portfolio website that is a part of the web development project.It is a responsive websites An interactive, responsive, and animated personal portfolio web app built to showcase modern web development skills. Features: Theme Switch: Toggle between light and dark modes for a personalized viewing experience. Mobile Menu Toggle: Fully responsive navigation menu optimized for mobile devices. Animated Counters: Dynamic statistical displays for skills or project milestones. Real-time Form Validation: Instant feedback on the contact form to ensure data accuracy. Scroll-triggered Animations: Smooth visual effects that activate as the user explores the page. 6+ Detailed Sections: Including Header, Navigation, and other essential portfolio components. Technologies Used HTML5: Semantic structure . CSS3: Advanced styling using Grid and Flexbox for responsiveness and custom animations. JavaScript : Powering all core interactions . Screenshot:
+
+Instructions to Run: 1.clone the repository: git clone https://github.com/alfredapphia-ship-it/interactive-portfolio.git 2.Navigate to project: cd interactive-portfolio 3.open the project
+
+Author:Apphia Alfred
